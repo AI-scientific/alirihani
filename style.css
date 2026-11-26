@@ -1,0 +1,208 @@
+/* Ali Rihani — portfolio stylesheet. Plain CSS, no build step. */
+
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5b636e;
+  --accent: #870052;        /* KI plum */
+  --accent-soft: #f6e8f0;
+  --border: #e4e1da;
+  --max: 920px;
+  --radius: 10px;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --surface: #1c1f23;
+    --text: #e8e6e3;
+    --muted: #a3a9b1;
+    --accent: #e57ab4;
+    --accent-soft: #2c1f27;
+    --border: #2e3237;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- Navigation ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.site-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; color: var(--text); text-decoration: none; }
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0;
+}
+.site-nav ul a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.site-nav ul a:hover { color: var(--accent); }
+
+/* ---------- Hero / intro ---------- */
+.hero { padding: 4.5rem 0 3rem; }
+.hero .eyebrow {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5vw, 3.3rem);
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+}
+.hero .role { font-size: 1.2rem; color: var(--muted); margin: 0 0 1.5rem; }
+.hero .lede { max-width: 68ch; font-size: 1.1rem; }
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0 0;
+}
+.contact-links a {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.contact-links a:hover { border-color: var(--accent); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+.stat strong { display: block; font-size: 1.6rem; color: var(--accent); line-height: 1.2; }
+.stat span { color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- Sections ---------- */
+section { padding: 3rem 0; border-top: 1px solid var(--border); }
+section h2 {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  margin: 0 0 1.5rem;
+}
+section h3 { margin: 2rem 0 1rem; font-size: 1.15rem; }
+.note { color: var(--muted); font-size: 0.92rem; }
+
+/* Cards (current work) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+}
+.card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.97rem; }
+
+/* Timeline (experience) */
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--border); }
+.timeline li { position: relative; padding: 0 0 1.75rem 1.5rem; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.45rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+.timeline .when { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+.timeline h4 { margin: 0.15rem 0 0.1rem; font-size: 1.07rem; }
+.timeline .where { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
+.timeline p { margin: 0; }
+
+/* Two-column lists */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 2.5rem; }
+.plain-list { padding-left: 1.1rem; margin: 0; }
+.plain-list li { margin-bottom: 0.45rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; list-style: none; padding: 0; margin: 0; }
+.tags li {
+  background: var(--accent-soft);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Publications */
+.pubs { padding-left: 1.6rem; margin: 0; }
+.pubs li { margin-bottom: 1rem; padding-left: 0.25rem; }
+.pubs .title { font-weight: 600; }
+.pubs .authors { color: var(--muted); font-size: 0.93rem; }
+.pubs .venue { font-style: italic; }
+.pubs .links a { font-size: 0.88rem; margin-right: 0.6rem; }
+.me { color: var(--text); font-weight: 700; }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 560px) {
+  .hero { padding-top: 3rem; }
+  section { padding: 2.25rem 0; }
+}
+
+@media print {
+  .site-nav { display: none; }
+  section { border: 0; padding: 1.25rem 0; }
+  a { color: inherit; }
+}
